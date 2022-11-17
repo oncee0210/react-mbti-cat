@@ -4,14 +4,49 @@ import { ProgressBar, Button } from 'react-bootstrap';
 import { QuestionData } from '../assets/data/questiondata'
 
 const Question = () => {
+  const [questionNo, setQuestionNo] = React.useState(0);
+
+  const [totalScore, setTotalScore] = React.useState([
+    { id: "EI", score: 0 },
+    { id: "SN", score: 0 },
+    { id: "TF", score: 0 },
+    { id: "JP", score: 0 },
+  ]);
+
+  const handleClickButtonA = (no, type) => {
+    if( type === "EI" ) {
+      const addScore = totalScore[0].score + no; // 기존 스코어에 더한 값을 계산 (기존의 값 + 배점)
+      const newObject = { id: "EI", score: addScore }; // 새로운 객체
+      totalScore.splice(0, 1, newObject); // splice 통해 새로운 객체를 해당 객체 자리에 넣어줌
+    } else if( type === "SN" ) {
+      const addScore = totalScore[1].score + no;
+      const newObject = { id: "SN", score: addScore };
+      totalScore.splice(1, 1, newObject);
+    } else if( type === "TF" ) {
+      const addScore = totalScore[2].score + no;
+      const newObject = { id: "TF", score: addScore };
+      totalScore.splice(2, 1, newObject);
+    } else {
+      const addScore = totalScore[3].score + no;
+      const newObject = { id: "JP", score: addScore };
+      totalScore.splice(3, 1, newObject);
+    }
+
+    setQuestionNo(questionNo + 1);
+  }
+
+  const handleClickButtonB = (no, type) => {
+    setQuestionNo(questionNo + 1);
+  }
+
   return (
     <Wrapper>
       <Contents>
-        <ProgressBar striped variant="danger" now={80} style={{marginTop: '20px'}} />
-        <Title>{QuestionData[0].title}</Title>
+        <ProgressBar striped variant="danger" now={(questionNo / QuestionData.length) * 100} style={{marginTop: '20px'}} />
+        <Title>{QuestionData[questionNo].title}</Title>
         <BUttonGroup className="btn_group">
-          <Button>{QuestionData[0].answera}</Button>
-          <Button>{QuestionData[0].answerb}</Button>
+          <Button onClick={()=>handleClickButtonA(1, QuestionData[questionNo].type)}>{QuestionData[questionNo].answera}</Button>
+          <Button onClick={()=>handleClickButtonB(0, QuestionData[questionNo].type)}>{QuestionData[questionNo].answerb}</Button>
         </BUttonGroup>
       </Contents>
     </Wrapper>
