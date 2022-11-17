@@ -7,6 +7,9 @@
   src: url(./assets/fonts/SimKyungha.ttf);
 }
 
+.btn_group{margin-top: 10px;}
+.btn_group button{width: 40%; min-height: 200px; margin: 0 10px 0; font-size: 20px;}
+
 .btn1 {
   font-family: "SimKtungha";
   margin-top: 20px;
