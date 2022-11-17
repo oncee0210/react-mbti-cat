@@ -3,10 +3,18 @@ import React from 'react';
 import styled from 'styled-components';
 import PangImage from '../assets/ggompang.jpeg';
 import { Button } from 'react-bootstrap';
+import { useNavigate } from 'react-router-dom';
 
 //css-in-js
 
 const Home = () => {
+  const navigate = useNavigate();
+
+  const handleClickButton = () => {
+    //이전에는 useHistory, 요즘은 react router 버전 업데이트로 useNavigate 사용
+    navigate('/question');
+  }
+
   return (
     <Wrapper>
       <Header>Cats</Header>
@@ -18,7 +26,7 @@ const Home = () => {
         <Desc>
           나의 MBTI 성향과 잘맞는 고양이 찾기
         </Desc>
-        <Button>시작하기</Button>
+        <Button className="btn1" onClick={handleClickButton}>시작하기</Button>
       </Contents>
     </Wrapper>
   )
@@ -30,12 +38,14 @@ const Wrapper = styled.div`
   background-color: #fff;
   width: 100%;
   height: 100vh;
+  font-family: "SimKtungha";
 `
 
 const Header = styled.div`
-  font-size: 48px;
   display: flex;
   justify-content: center;
+  font-family: "SimKtungha";
+  font-size: 48px;
 `
 
 const Contents = styled.div`

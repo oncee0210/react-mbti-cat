@@ -1,0 +1,16 @@
+.App {
+  font-family: 'SimKtungha';
+}
+
+@font-face {
+  font-family: 'SimKtungha';
+  src: url(./assets/fonts/SimKyungha.ttf);
+}
+
+.btn1 {
+  font-family: "SimKtungha";
+  margin-top: 20px;
+  background-color: #00afc4;
+  color: #fff;
+  border-color: #009eb1;
+}
