@@ -1,12 +1,22 @@
-import React from 'react';
+import React, { useState } from 'react';
 //css-in-js
 import styled from 'styled-components';
 import { Button } from 'react-bootstrap';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 import { ResultData } from '../assets/data/resultdata';
 
 const Result = () => {
   const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
+  const mbti = searchParams.get('mbti');
+  const [resultData, setResultData] = useState({});
+
+  React.useEffect(()=>{
+    const result = ResultData.find((s) => s.best === mbti);
+    setResultData(result);
+  }, [mbti]);
+
+  console.log(resultData);
 
   return (
     <Wrapper>
@@ -14,10 +24,11 @@ const Result = () => {
       <Contents>
         <Title>View Results</Title>
         <LogoImage>
-          <img src={ResultData[0].image} className="rounded-circle" width={350} height={350} alt="cat" />
+          <img src={resultData.image} className="rounded-circle" width={350} height={350} alt="cat" />
         </LogoImage>
         <Desc>
-          당신의 성향과 잘맞는 고양이는 "{ResultData[0].name}"
+          <Mbti>{mbti}</Mbti>
+          당신과 잘맞는 고양이는 "{resultData.name}"
         </Desc>
         <Button className="btn1" onClick={()=>navigate('/')}>다시하기</Button>
       </Contents>
@@ -57,4 +68,10 @@ const LogoImage = styled.div`
 const Desc = styled.div`
   margin-top: 40px;
   font-size: 20px;
+`
+
+const Mbti = styled.div`
+  display: block;
+  font-size: 28px;
+  font-weight: 600;
 `
