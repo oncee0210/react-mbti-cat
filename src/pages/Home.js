@@ -21,7 +21,7 @@ const Home = () => {
       <Contents>
         <Title>What kind of cat is right for me?</Title>
         <LogoImage>
-          <img src={PangImage} className="rounded-circle" width={350} height={350} />
+          <img src={PangImage} className="rounded-circle" width={350} height={350}  alt="Logo" />
         </LogoImage>
         <Desc>
           나의 MBTI 성향과 잘맞는 고양이 찾기
