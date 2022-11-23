@@ -1,11 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
 import { ProgressBar, Button } from 'react-bootstrap';
-import { QuestionData } from '../assets/data/questiondata'
+import { useNavigate } from 'react-router-dom';
+import { QuestionData } from '../assets/data/questiondata';
 
 const Question = () => {
   const [questionNo, setQuestionNo] = React.useState(0);
-
   const [totalScore, setTotalScore] = React.useState([
     { id: "EI", score: 0 },
     { id: "SN", score: 0 },
@@ -13,7 +13,21 @@ const Question = () => {
     { id: "JP", score: 0 },
   ]);
 
-  const handleClickButtonA = (no, type) => {
+  const navigate = useNavigate();
+
+  const handleClickButton = (no, type) => {
+    const newScore = totalScore.map((s) => 
+      s.id === type ? {id: s.id, score: s.score + no} : s
+    );
+
+    setTotalScore(newScore);
+
+    if(QuestionData.length !== questionNo + 1){
+      setQuestionNo(questionNo + 1);
+    } else {
+      navigate('/result');
+    }
+    /*
     if( type === "EI" ) {
       const addScore = totalScore[0].score + no; // 기존 스코어에 더한 값을 계산 (기존의 값 + 배점)
       const newObject = { id: "EI", score: addScore }; // 새로운 객체
@@ -31,11 +45,8 @@ const Question = () => {
       const newObject = { id: "JP", score: addScore };
       totalScore.splice(3, 1, newObject);
     }
+    */
 
-    setQuestionNo(questionNo + 1);
-  }
-
-  const handleClickButtonB = (no, type) => {
     setQuestionNo(questionNo + 1);
   }
 
@@ -45,8 +56,8 @@ const Question = () => {
         <ProgressBar striped variant="danger" now={(questionNo / QuestionData.length) * 100} style={{marginTop: '20px'}} />
         <Title>{QuestionData[questionNo].title}</Title>
         <BUttonGroup className="btn_group">
-          <Button onClick={()=>handleClickButtonA(1, QuestionData[questionNo].type)}>{QuestionData[questionNo].answera}</Button>
-          <Button onClick={()=>handleClickButtonB(0, QuestionData[questionNo].type)}>{QuestionData[questionNo].answerb}</Button>
+          <Button onClick={()=>handleClickButton(1, QuestionData[questionNo].type)}>{QuestionData[questionNo].answera}</Button>
+          <Button onClick={()=>handleClickButton(0, QuestionData[questionNo].type)}>{QuestionData[questionNo].answerb}</Button>
         </BUttonGroup>
       </Contents>
     </Wrapper>
