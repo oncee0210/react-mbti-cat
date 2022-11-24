@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import { Button } from 'react-bootstrap';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import { ResultData } from '../assets/data/resultdata';
+import KakaoShareButton from '../component/KakaoShareButton';
 
 const Result = () => {
   const navigate = useNavigate();
@@ -28,7 +29,10 @@ const Result = () => {
           <Mbti>{mbti}</Mbti>
           당신과 잘맞는 고양이는 "{resultData.name}"
         </Desc>
-        <Button className="btn1" onClick={()=>navigate('/')}>다시하기</Button>
+        <ButtonGroup>
+          <Button className="btn1" onClick={()=>navigate('/')}>다시하기</Button>
+          <KakaoShareButton />
+        </ButtonGroup>
       </Contents>
     </Wrapper>
   )
@@ -72,4 +76,10 @@ const Mbti = styled.div`
   display: block;
   font-size: 28px;
   font-weight: 600;
+`
+
+const ButtonGroup = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
 `
