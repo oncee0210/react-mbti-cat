@@ -31,7 +31,7 @@ const Result = () => {
         </Desc>
         <ButtonGroup>
           <Button className="btn1" onClick={()=>navigate('/')}>다시하기</Button>
-          <KakaoShareButton />
+          <KakaoShareButton data={resultData} />
         </ButtonGroup>
       </Contents>
     </Wrapper>
