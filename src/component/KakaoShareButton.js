@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 import { Button } from 'react-bootstrap';
 const { Kakao } = window;
 
@@ -36,7 +36,7 @@ const KakaoShareButton = ({ data }) => {
   };
 
   return(
-    <Button oncClick={shareKakao} className="btn1 kakao" style={{marginLeft: '10px'}} >카카오톡 공유하기</Button>
+    <Button onClick={shareKakao} className="btn1 kakao" style={{marginLeft: '10px'}} >카카오톡 공유하기</Button>
   )
 }
 
