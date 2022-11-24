@@ -12,7 +12,7 @@ const KakaoShareButton = ({ data }) => {
   },[]);
 
   const shareKakao = () => {
-    Kakao.Link.sendDefault({
+    Kakao.Share.sendDefault({
       objectType: 'feed',
       content: {
         title: 'MBTI로 보는 고양이 결과',
