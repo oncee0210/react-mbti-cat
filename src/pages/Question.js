@@ -68,10 +68,10 @@ const Question = () => {
       <Contents>
         <ProgressBar striped variant="danger" now={(questionNo / QuestionData.length) * 100} style={{marginTop: '20px'}} />
         <Title>{QuestionData[questionNo].title}</Title>
-        <BUttonGroup className="btn_group">
+        <ButtonGroup className="btn_group">
           <Button onClick={()=>handleClickButton(1, QuestionData[questionNo].type)}>{QuestionData[questionNo].answera}</Button>
           <Button onClick={()=>handleClickButton(0, QuestionData[questionNo].type)}>{QuestionData[questionNo].answerb}</Button>
-        </BUttonGroup>
+        </ButtonGroup>
       </Contents>
     </Wrapper>
   )
@@ -84,6 +84,7 @@ const Wrapper = styled.div`
   width: 100%;
   height: 100vh;
   font-family: "SimKtungha";
+  padding: 20px;
 `
 
 const Contents = styled.div`
@@ -92,10 +93,11 @@ const Contents = styled.div`
 
 const Title = styled.div`
   margin-top: 10px;
-  font-size: 30px;
+  font-size: 24px;
+  word-break: keep-all;
 `
 
-const BUttonGroup = styled.div`
+const ButtonGroup = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;

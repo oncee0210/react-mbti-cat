@@ -21,7 +21,7 @@ const Home = () => {
       <Contents>
         <Title>What kind of cat is right for me?</Title>
         <LogoImage>
-          <img src={PangImage} className="rounded-circle" width={350} height={350}  alt="Logo" />
+          <img src={PangImage} className="rounded-circle" width={250} height={250}  alt="Logo" />
         </LogoImage>
         <Desc>
           나의 MBTI 성향과 잘맞는 고양이 찾기
@@ -39,6 +39,7 @@ const Wrapper = styled.div`
   width: 100%;
   height: 100vh;
   font-family: "SimKtungha";
+  padding: 20px;
 `
 
 const Header = styled.div`
@@ -54,7 +55,7 @@ const Contents = styled.div`
 
 const Title = styled.div`
   margin-top: 10px;
-  font-size: 30px;
+  font-size: 26px;
 `
 
 const LogoImage = styled.div`
