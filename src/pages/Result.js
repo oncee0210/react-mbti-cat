@@ -43,7 +43,7 @@ export default Result;
 const Wrapper = styled.div`
   background-color: #fff;
   width: 100%;
-  height: 100vh;
+  height: calc(100vh - 106px);
   font-family: "SimKtungha";
   padding: 20px;
 `
